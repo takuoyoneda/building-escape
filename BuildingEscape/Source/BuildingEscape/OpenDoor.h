@@ -30,11 +30,10 @@ protected:
 
 private:
 	UPROPERTY(VisibleAnywhere)
-		float OpenAngle = 90.f;
+	float OpenAngle = 90.f;
 
 	UPROPERTY(EditAnywhere)
-		ATriggerVolume* PressurePlate;
+	ATriggerVolume* PressurePlate;
 
-	UPROPERTY(EditAnywhere)
-		AActor* ActorThatOpens; // Remember pawn inherits from actor
+	AActor* ActorThatOpens;
 };

@@ -33,6 +33,8 @@ void UOpenDoor::BeginPlay()
 		ObjectName = PressurePlate->GetName();
 		UE_LOG(LogTemp, Warning, TEXT("=======================> PressurePlate: %s"), *ObjectName);
 	}
+
+	ActorThatOpens = GetWorld()->GetFirstPlayerController()->GetPawn();
 }
 
 
