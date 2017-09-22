@@ -18,13 +18,31 @@ void UOpenDoor::BeginPlay()
 {
 	Super::BeginPlay();
 
+	//OpenDoor();
 	FString ObjectName = GetOwner()->GetName();
-
 	UE_LOG(LogTemp, Warning, TEXT("=======================> BeginPlay: %s"), *ObjectName);
 
-	AActor* Owner = GetOwner();
+	if (ActorThatOpens != NULL)
+	{
+		ObjectName = ActorThatOpens->GetName();
+		UE_LOG(LogTemp, Warning, TEXT("=======================> ActorThatOpens: %s"), *ObjectName);
+	}
 
-	FRotator NewRotation = FRotator(0.f, -60.f ,0.f);
+	if (PressurePlate != NULL)
+	{
+		ObjectName = PressurePlate->GetName();
+		UE_LOG(LogTemp, Warning, TEXT("=======================> PressurePlate: %s"), *ObjectName);
+	}
+}
+
+
+void UOpenDoor::OpenDoor()
+{
+	FString ObjectName = GetOwner()->GetName();
+	UE_LOG(LogTemp, Warning, TEXT("=======================> OpenDoor: %s"), *ObjectName);
+
+	AActor* Owner = GetOwner();
+	FRotator NewRotation = FRotator(0.f, -60.f, 0.f);
 	Owner->SetActorRotation(NewRotation);
 }
 
@@ -34,6 +52,12 @@ void UOpenDoor::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompon
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	// ...
+	//UE_LOG(LogTemp, Warning, TEXT("=======================> TickComponent"));
+
+	if (PressurePlate != NULL && PressurePlate->IsOverlappingActor(ActorThatOpens))
+	{
+		OpenDoor();
+	}
 }
+
 
