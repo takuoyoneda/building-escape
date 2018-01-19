@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "PositionReport.h"
+#include "BuildingEscape.h"
 #include "GameFramework/Actor.h"
 
 
@@ -22,7 +23,7 @@ void UPositionReport::BeginPlay()
 
 	FString ObjectName = GetOwner()->GetName();
 	FString ObjectPos = GetOwner()->GetTransform().GetLocation().ToString();
-	//UE_LOG(LogTemp, Warning, TEXT("Position Reporting for %s is at %s"), *ObjectName, *ObjectPos);
+	UE_LOG(LogTemp, Warning, TEXT("Position Reporting for %s is at %s"), *ObjectName, *ObjectPos);
 }
 
 

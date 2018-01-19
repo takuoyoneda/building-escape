@@ -18,7 +18,6 @@ void UOpenDoor::BeginPlay()
 {
 	Super::BeginPlay();
 
-	//OpenDoor();
 	FString ObjectName = GetOwner()->GetName();
 	UE_LOG(LogTemp, Warning, TEXT("=======================> BeginPlay: %s"), *ObjectName);
 
@@ -40,8 +39,8 @@ void UOpenDoor::BeginPlay()
 
 void UOpenDoor::OpenDoor()
 {
-	FString ObjectName = GetOwner()->GetName();
-	UE_LOG(LogTemp, Warning, TEXT("=======================> OpenDoor: %s"), *ObjectName);
+	//FString ObjectName = GetOwner()->GetName();
+	//UE_LOG(LogTemp, Warning, TEXT("=======================> OpenDoor: %s"), *ObjectName);
 
 	AActor* Owner = GetOwner();
 	FRotator NewRotation = FRotator(0.f, -60.f, 0.f);

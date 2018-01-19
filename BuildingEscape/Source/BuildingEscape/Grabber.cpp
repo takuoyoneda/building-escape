@@ -30,15 +30,15 @@ void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-    FVector PlayerViewPointLocation;
-    FRotator PlayerViewPointRotation;
-    GetWorld()->GetFirstPlayerController()->GetPlayerViewPoint(
-        OUT PlayerViewPointLocation,
-        OUT PlayerViewPointRotation
-    );
-    UE_LOG(LogTemp, Warning, TEXT("Location: %s, Rotation: %s"),
-        *PlayerViewPointLocation.ToString(),
-        *PlayerViewPointRotation.ToString()
-    );
+    //FVector PlayerViewPointLocation;
+    //FRotator PlayerViewPointRotation;
+    //GetWorld()->GetFirstPlayerController()->GetPlayerViewPoint(
+    //    OUT PlayerViewPointLocation,
+    //    OUT PlayerViewPointRotation
+    //);
+    //UE_LOG(LogTemp, Warning, TEXT("Location: %s, Rotation: %s"),
+    //    *PlayerViewPointLocation.ToString(),
+    //    *PlayerViewPointRotation.ToString()
+    //);
 }
 
