@@ -18,6 +18,9 @@ void UOpenDoor::BeginPlay()
 {
 	Super::BeginPlay();
 
+	Owner = GetOwner();
+	ActorThatOpens = GetWorld()->GetFirstPlayerController()->GetPawn();
+
 	FString ObjectName = GetOwner()->GetName();
 	UE_LOG(LogTemp, Warning, TEXT("=======================> BeginPlay: %s"), *ObjectName);
 
@@ -32,21 +35,19 @@ void UOpenDoor::BeginPlay()
 		ObjectName = PressurePlate->GetName();
 		UE_LOG(LogTemp, Warning, TEXT("=======================> PressurePlate: %s"), *ObjectName);
 	}
-
-	ActorThatOpens = GetWorld()->GetFirstPlayerController()->GetPawn();
 }
-
 
 void UOpenDoor::OpenDoor()
 {
-	//FString ObjectName = GetOwner()->GetName();
-	//UE_LOG(LogTemp, Warning, TEXT("=======================> OpenDoor: %s"), *ObjectName);
-
-	AActor* Owner = GetOwner();
-	FRotator NewRotation = FRotator(0.f, -60.f, 0.f);
-	Owner->SetActorRotation(NewRotation);
+	UE_LOG(LogTemp, Warning, TEXT("=======================> OpenDoor()"));
+	Owner->SetActorRotation(FRotator(0.f, OpenAngle, 0.f));
 }
 
+void UOpenDoor::CloseDoor()
+{
+	UE_LOG(LogTemp, Warning, TEXT("=======================> CloseDoor()"));
+	Owner->SetActorRotation(FRotator(0.f, 0.f, 0.f));
+}
 
 // Called every frame
 void UOpenDoor::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
@@ -58,6 +59,12 @@ void UOpenDoor::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompon
 	if (PressurePlate != NULL && PressurePlate->IsOverlappingActor(ActorThatOpens))
 	{
 		OpenDoor();
+		LastDoorOpenTime = GetWorld()->GetTimeSeconds();
+	}
+
+	if ((GetWorld()->GetTimeSeconds() - LastDoorOpenTime) > DoorCloseDelay)
+	{
+		CloseDoor();
 	}
 }
 
