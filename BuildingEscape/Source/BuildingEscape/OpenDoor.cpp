@@ -21,31 +21,31 @@ void UOpenDoor::BeginPlay()
 	Owner = GetOwner();
 	ActorThatOpens = GetWorld()->GetFirstPlayerController()->GetPawn();
 
-	FString ObjectName = GetOwner()->GetName();
-	UE_LOG(LogTemp, Warning, TEXT("=======================> BeginPlay: %s"), *ObjectName);
+	//FString ObjectName = GetOwner()->GetName();
+	//UE_LOG(LogTemp, Warning, TEXT("=======================> BeginPlay: %s"), *ObjectName);
 
-	if (ActorThatOpens != NULL)
-	{
-		ObjectName = ActorThatOpens->GetName();
-		UE_LOG(LogTemp, Warning, TEXT("=======================> ActorThatOpens: %s"), *ObjectName);
-	}
+	//if (ActorThatOpens != NULL)
+	//{
+	//	ObjectName = ActorThatOpens->GetName();
+	//	UE_LOG(LogTemp, Warning, TEXT("=======================> ActorThatOpens: %s"), *ObjectName);
+	//}
 
-	if (PressurePlate != NULL)
-	{
-		ObjectName = PressurePlate->GetName();
-		UE_LOG(LogTemp, Warning, TEXT("=======================> PressurePlate: %s"), *ObjectName);
-	}
+	//if (PressurePlate != NULL)
+	//{
+	//	ObjectName = PressurePlate->GetName();
+	//	UE_LOG(LogTemp, Warning, TEXT("=======================> PressurePlate: %s"), *ObjectName);
+	//}
 }
 
 void UOpenDoor::OpenDoor()
 {
-	UE_LOG(LogTemp, Warning, TEXT("=======================> OpenDoor()"));
+	//UE_LOG(LogTemp, Warning, TEXT("=======================> OpenDoor()"));
 	Owner->SetActorRotation(FRotator(0.f, OpenAngle, 0.f));
 }
 
 void UOpenDoor::CloseDoor()
 {
-	UE_LOG(LogTemp, Warning, TEXT("=======================> CloseDoor()"));
+	//UE_LOG(LogTemp, Warning, TEXT("=======================> CloseDoor()"));
 	Owner->SetActorRotation(FRotator(0.f, 0.f, 0.f));
 }
 
