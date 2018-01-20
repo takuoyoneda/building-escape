@@ -58,19 +58,19 @@ void UGrabber::Grab() {
 	{
 		//UE_LOG(LogTemp, Warning, TEXT("=================================> ActorHit"));
 
-		PhysicsHandle->GrabComponentAtLocation(
-			ComponentToGrab,
-			NAME_None,
-			ComponentToGrab->GetOwner()->GetActorLocation()
-		);
-
-		// original
-		//PhysicsHandle->GrabComponent(
+		//PhysicsHandle->GrabComponentAtLocation(
 		//	ComponentToGrab,
 		//	NAME_None,
-		//	ComponentToGrab->GetOwner()->GetActorLocation(),
-		//	true // allow rotation
+		//	ComponentToGrab->GetOwner()->GetActorLocation()
 		//);
+
+		// original
+		PhysicsHandle->GrabComponent(
+			ComponentToGrab,
+			NAME_None,
+			ComponentToGrab->GetOwner()->GetActorLocation(),
+			true // allow rotation
+		);
 	}
 }
 
