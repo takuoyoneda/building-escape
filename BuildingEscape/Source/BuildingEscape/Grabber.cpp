@@ -64,6 +64,8 @@ void UGrabber::Grab() {
 		//	ComponentToGrab->GetOwner()->GetActorLocation()
 		//);
 
+		if (!PhysicsHandle) { return; }
+
 		// original
 		PhysicsHandle->GrabComponent(
 			ComponentToGrab,
@@ -76,6 +78,9 @@ void UGrabber::Grab() {
 
 void UGrabber::Release() {
 	//UE_LOG(LogTemp, Warning, TEXT("Grab released"));
+
+	if (!PhysicsHandle) { return; }
+
 	PhysicsHandle->ReleaseComponent();
 }
 
@@ -83,6 +88,8 @@ void UGrabber::Release() {
 void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
+
+	if (!PhysicsHandle) { return; }
 
 	if (PhysicsHandle->GrabbedComponent)
 	{
